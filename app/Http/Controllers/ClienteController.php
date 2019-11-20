@@ -1,22 +1,41 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers; //Lugar de trabajo
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\BaseController;
 use App\Cliente;
 
-class ClienteController extends Controller
+class ClienteController extends BaseController
 {
     //Listar todos los clientes
-    public function listar(){
-        $listaClientes = Cliente::all();
-        return response()->json($listaClientes);  
+    public function index()
+    {
+        $clienteList = Cliente::all();
+        return $this->sendResponse($clienteList, "LISTA DE CLIENTES RECUPERADA");
     }
     //Recuperar un cliente por id
-
+    public function show(Cliente $cliente)
+    {
+        return $this->sendResponse($cliente, "CLIENTE RECUPERADO");
+    }
     //Editar un cliente por id
-
+    public function update(Request $request, Cliente $cliente)
+    {
+        $cliente->update($request->all());
+        return $this->sendResponse($cliente, "CLIENTE EDITADO");
+    }
     //Eliminar un cliente por id
+    public function destroy(Cliente $cliente)
+    {
+        $cliente->delete();
+        return $this->sendResponse($cliente, "CLIENTE ELIMINADO");
+     }
 
     //Crear un cliente
+    public function store(Request $request)
+    {
+        $cliente = Cliente::create($request->all());
+        return $this->sendResponse($cliente, "CLIENTE CREADO");
+    }
 }
