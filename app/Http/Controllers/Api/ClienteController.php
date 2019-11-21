@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers; //Lugar de trabajo
+namespace App\Http\Controllers\Api; //Lugar de trabajo
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\BaseController;
+use App\Http\Controllers\Api\BaseController;// Updated
 use App\Cliente;
 
 class ClienteController extends BaseController
