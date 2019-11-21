@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api; //Lugar de trabajo
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Api\BaseController;// Updated
-use App\Cliente;
+use App\Http\Controllers\Api\BaseController; // Updated
+use App\Models\Cliente;
 
 class ClienteController extends BaseController
 {
@@ -30,7 +30,7 @@ class ClienteController extends BaseController
     {
         $cliente->delete();
         return $this->sendResponse($cliente, "CLIENTE ELIMINADO");
-     }
+    }
 
     //Crear un cliente
     public function store(Request $request)
