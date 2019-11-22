@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api; //Lugar de trabajo
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\BaseController; // Updated
 use App\Models\Cliente;
+use App\Http\Requests\Api\Clientes\StoreRequest;
+use App\Http\Requests\Api\Clientes\UpdateRequest;
 
 class ClienteController extends BaseController
 {
@@ -20,7 +22,7 @@ class ClienteController extends BaseController
         return $this->sendResponse($cliente, "CLIENTE RECUPERADO");
     }
     //Editar un cliente por id
-    public function update(Request $request, Cliente $cliente)
+    public function update(UpdateRequest $request, Cliente $cliente)
     {
         $cliente->update($request->all());
         return $this->sendResponse($cliente, "CLIENTE EDITADO");
@@ -33,7 +35,7 @@ class ClienteController extends BaseController
     }
 
     //Crear un cliente
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
         $cliente = Cliente::create($request->all());
         return $this->sendResponse($cliente, "CLIENTE CREADO");
