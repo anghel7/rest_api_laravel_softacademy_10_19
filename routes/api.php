@@ -22,3 +22,5 @@ Route::get('clientes/{cliente}/', 'Api\ClienteController@show');
 Route::post('clientes/', 'Api\ClienteController@store');
 Route::put('clientes/{cliente}/', 'Api\ClienteController@update');
 Route::delete('clientes/{cliente}/', 'Api\ClienteController@destroy');
+
+Route::post('auth/register', 'Api\UserController@register');
