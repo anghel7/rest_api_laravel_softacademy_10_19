@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Symfony\Component\Routing\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +25,8 @@ Route::put('clientes/{cliente}/', 'Api\ClienteController@update');
 Route::delete('clientes/{cliente}/', 'Api\ClienteController@destroy');
 
 Route::post('auth/register', 'Api\UserController@register');
+Route::post('auth/login', 'Api\UserController@login');
+
+Route::group(['middleware'=>'auth:api'],function(){
+    Route::get('auth/me', 'Api\UserController@me');
+});

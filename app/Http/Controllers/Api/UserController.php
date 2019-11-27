@@ -25,18 +25,22 @@ class UserController extends BaseController
 
     public function login(LoginRequest $request)
     {
-         if (Auth::attempt($request->all())) {
-        //if (Auth::attempt(['email' => request('email'), 'password' => request('password')])) {
+        if (Auth::attempt($request->all())) {
             $user = Auth::user();
+
             $result = [
-                "token" => $user->createToken("FacturacionApp")->accessToken
+                "token" => $user->createToken("myApp")->accessToken
             ];
-            return $this->sendResponse($result, "You are login");
+            dd($result);
+            return $this->sendResponse($result, "Inicio sesion", 200);
         } else {
-            return $this->sendError("Unauthorized", [], 401);
+            return $this->sendError("No authorizado", [], 401);
         }
     }
 
     public function me()
-    { }
+    {
+        $user = Auth::user();
+        return $this->sendResponse($user, "Tu usuario", 200);
+    }
 }
