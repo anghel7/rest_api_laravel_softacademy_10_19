@@ -27,7 +27,7 @@ class UserController extends BaseController
     {
         if (Auth::attempt($request->all())) {
             $user = Auth::user();
-
+            // adding comment
             $result = [
                 "token" => $user->createToken("myApp")->accessToken
             ];            
