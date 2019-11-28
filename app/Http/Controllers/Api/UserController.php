@@ -30,8 +30,7 @@ class UserController extends BaseController
 
             $result = [
                 "token" => $user->createToken("myApp")->accessToken
-            ];
-            dd($result);
+            ];            
             return $this->sendResponse($result, "Inicio sesion", 200);
         } else {
             return $this->sendError("No authorizado", [], 401);
