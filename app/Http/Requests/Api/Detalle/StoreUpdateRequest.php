@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Api\Clientes;
+namespace App\Http\Requests\Api\Detalle;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
@@ -8,7 +8,7 @@ use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\JsonResponse;
 
-class StoreRequest extends FormRequest
+class StoreUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,11 +28,10 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'nombre' => 'required|min:5|max:20',
-            'apellido' => 'required',
-            'fecha_nacimiento' => 'required',
-            'telefono' => 'required',
-            'email' => 'required'
+            'id_factura' => 'required',
+            'id_producto' => 'required',
+            'cantidad' => 'required',
+            'precio' => 'required'
         ];
     }
 
